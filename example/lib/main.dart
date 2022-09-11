@@ -27,10 +27,10 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   /// The interval each widget is delayed before transitioning.
-  static const Duration _delay = const Duration(milliseconds: 40);
+  static const Duration _delay = const Duration(milliseconds: 500);
 
   /// The amount each widget translates during the transition.
-  static const Offset _translate = Offset(0.0, -24.0);
+  static const Offset _translate = Offset(50, 4.0);
 
   bool _visible = true;
 
@@ -51,13 +51,9 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Icon(_visible ? Icons.visibility_off : Icons.visibility),
       ),
       body: ListView(
-        padding: const EdgeInsets.only(
-          top: 12.0,
-          left: 20.0,
-          right: 20.0,
-        ),
+        padding: const EdgeInsets.only(top: 12.0, left: 20.0, right: 20.0),
         children: [
-          FadeAndTranslate(
+          /* FadeAndTranslate(
             autoStart: true,
             delay: _visible ? _delay * 0 : _delay * 5,
             translate: _translate,
@@ -77,15 +73,17 @@ class _MyHomePageState extends State<MyHomePage> {
             translate: _translate,
             visible: _visible,
             child: MyWidget(color: Colors.yellow, label: 'Yellow'),
-          ),
+          ), */
           FadeAndTranslate(
             autoStart: true,
-            delay: _visible ? _delay * 3 : _delay * 2,
-            translate: _translate,
+            delay: Duration.zero,
+            translate: Offset(100, 40.0),
             visible: _visible,
+            curve: Curves.easeInSine,
+            duration: const Duration(milliseconds: 100),
             child: MyWidget(color: Colors.green, label: 'Green'),
           ),
-          FadeAndTranslate(
+          /* FadeAndTranslate(
             autoStart: true,
             delay: _visible ? _delay * 4 : _delay,
             translate: _translate,
@@ -98,7 +96,7 @@ class _MyHomePageState extends State<MyHomePage> {
             translate: _translate,
             visible: _visible,
             child: MyWidget(color: Colors.purple, label: 'Purple'),
-          ),
+          ), */
         ],
       ),
     );
